@@ -20,9 +20,6 @@
 // Step 5 -> The array should now have all the zeros at the end while maintaining the relative order of the non-zero elements.
 
 
-
-
-
 function moveZeroes(nums) {
     let insertPosition = 0;
     for(let i=0;i<nums.length;i++){
@@ -43,3 +40,33 @@ function moveZeroes(nums) {
 console.log(moveZeroes([0,1,0,3,12]))
 console.log(moveZeroes([0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,12,0,0,0,0,12]))
 console.log(moveZeroes([0]))
+
+
+
+
+var pivotIndex = function(nums) {
+    let totalSum = 0, leftWeight = 0;
+    nums.forEach((num)=> totalSum += num)
+  
+    if(totalSum - nums[0] === 0) {
+      return 0
+    }
+  
+    if(totalSum - nums[nums.length - 1] === 0) {
+      return nums.length - 1
+    }
+  
+    for(let i=0; i<nums.length; i++){
+      let pivotIndex = i+1;
+      leftWeight += nums[i]
+      if((totalSum - leftWeight - nums[pivotIndex]) === leftWeight){
+        return pivotIndex
+      }
+      console.log(totalSum - leftWeight - nums[pivotIndex])
+  }
+  
+  return -1
+    
+  
+  };
+
