@@ -74,7 +74,7 @@
 //     }
 //     // If the list length is 1
 //     if (this.length === 1) {
-//         this.head = this.tail = null;
+//         this.head = this.tail = null
 //         this.length = 0;
 //         return this;
 //       }
