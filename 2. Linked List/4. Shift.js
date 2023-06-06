@@ -92,36 +92,3 @@
 // list.push("there");
 
 // console.log(list.shift());
-
-setTimeout(()=>{
-  console.log("first time out")
-},1000)
-
-setTimeout(()=>{
-  console.log("second time out")
-  process.nextTick(()=>{
-    console.log("inner next tick inside second timeout")
-  })
-},700)
-
-setTimeout(()=>{
-  console.log("third time out")
-},0)
-
-process.nextTick(() => console.log("first next tick"));
-process.nextTick(() => {
-  console.log("second next tick");
-  Promise.resolve().then(() =>
-    console.log("inner promise inside second next tick")
-  );
-});
-process.nextTick(() => console.log("Third next tick"));
-
-Promise.resolve().then(() => console.log("first promise"));
-Promise.resolve().then(() => {
-  console.log("second promise");
-  process.nextTick(() =>
-    console.log("inner next tick queue inside second promise")
-  );
-});
-Promise.resolve().then(() => console.log("Third promise"));
